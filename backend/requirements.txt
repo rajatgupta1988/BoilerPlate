@@ -1,0 +1,11 @@
+django
+djangorestframework
+djangorestframework-simplejwt
+django-cors-headers
+django-allauth
+gunicorn
+python-dotenv
+sentry-sdk[django]
+drf-yasg
+django-prometheus>=2.3.1
+psycopg2-binary
