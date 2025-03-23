@@ -36,11 +36,25 @@ services:
     ports:
       - "9090:9090"
 
+  mkdocs:
+    container_name: mkdocs
+    build:
+      context: ./docs
+    ports:
+      - "8005:8000"
+    volumes:
+      - ./docs:/app
+
+
   grafana:
     container_name: grafana
     image: grafana/grafana
     ports:
       - "3001:3000"
+    volumes:
+      - ./monitoring/grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
+      - ./monitoring/grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
+      - ./monitoring/grafana/dashboards:/var/lib/grafana/dashboards
 
 volumes:
   postgres_data:

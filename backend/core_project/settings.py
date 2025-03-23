@@ -38,6 +38,9 @@ INSTALLED_APPS = [
 
     'django_prometheus',  # Add this at the top
 
+    'rest_framework',
+    'drf_yasg',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

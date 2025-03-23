@@ -9,3 +9,4 @@ sentry-sdk[django]
 drf-yasg
 django-prometheus>=2.3.1
 psycopg2-binary
+

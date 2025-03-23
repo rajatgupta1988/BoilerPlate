@@ -18,8 +18,20 @@ from django.contrib import admin
 from django.urls import path
 from django.urls import include, path
 
+from api.views import ping
+from api.schema import schema_view
+
+
+
+
 urlpatterns = [
 
     path('', include('django_prometheus.urls')),  # Adds /metrics endpoint
     path('admin/', admin.site.urls),
+
+
+    path('ping/', ping),
+    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+
+
 ]
