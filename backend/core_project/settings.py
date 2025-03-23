@@ -16,7 +16,6 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Update ALLOWED_HOSTS to read from environment
 
 
 # Quick-start development settings - unsuitable for production
@@ -28,7 +27,10 @@ SECRET_KEY = 'django-insecure-ievc&e^!6_%s_6)!swt-(x3ku*b^lw5evmpn1e&+(^u7ohkv+%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-#ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1,backend').split(',')
+
+# Update ALLOWED_HOSTS to read from environment
+
+ALLOWED_HOSTS = ["*"]
 
 
 
@@ -135,3 +137,24 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+CELERY_BROKER_URL = 'redis://redis:6379/0'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+
+
+
+
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
+
+sentry_sdk.init(
+    dsn=os.getenv("SENTRY_DSN", None),  # Reads from environment variable (optional setup)
+    integrations=[DjangoIntegration()],
+    traces_sample_rate=1.0,
+    send_default_pii=True
+)
+
+

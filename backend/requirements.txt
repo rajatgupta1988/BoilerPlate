@@ -9,4 +9,6 @@ sentry-sdk[django]
 drf-yasg
 django-prometheus>=2.3.1
 psycopg2-binary
-
+celery==5.3.4
+redis==5.0.1
+django-templated-mail==1.1.1

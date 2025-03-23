@@ -33,5 +33,8 @@ bash:
 collectstatic:
 	$(BACKEND) python manage.py collectstatic --noinput
 
+clean:
+	docker-compose down --volumes --remove-orphans
+	docker system prune -a -f
 
-.PHONY: up down restart migrate makemigrations superuser logs swagger bash collectstatic
+.PHONY: up down restart migrate makemigrations superuser logs swagger bash collectstatic clean
