@@ -1,7 +1,13 @@
 FROM node:20-alpine as builder
+
 WORKDIR /app
-COPY package.json package-lock.json ./
+
+COPY package*.json ./
 RUN npm install
+
+# ❌ No need to install @tailwindcss/postcss anymore
+RUN npm install -D tailwindcss postcss autoprefixer
+
 COPY . .
 RUN npm run build
 
